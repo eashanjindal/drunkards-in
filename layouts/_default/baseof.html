@@ -30,8 +30,8 @@
     "headline": "{{ .Title }}",
     "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary }}{{ end }}",
     "url": "{{ .Permalink }}",
-    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05+05:30" }}",
-    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05+05:30" }}",
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
     "author": {
       "@type": "Organization",
       "name": "Drunkards.in",
@@ -58,7 +58,7 @@
     "name": "{{ .Title }}",
     "description": "{{ .Description }}",
     "url": "{{ .Permalink }}",
-    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05+05:30" }}",
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
     "image": "https://drunkards.in/images/og-default.jpg",
     "author": {
       "@type": "Organization",
