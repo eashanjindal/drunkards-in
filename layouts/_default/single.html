@@ -1,41 +1,39 @@
 {{ define "main" }}
 <article class="single-post">
-  <div class="container">
-    <header class="post-header">
-      <div class="post-meta">
-        <span class="post-category">{{ .Params.category }}</span>
-        <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span>
-        <span class="read-time">{{ math.Round (div (countwords .Content) 200) }} min read</span>
-      </div>
-      <h1>{{ .Title }}</h1>
-      {{ if .Description }}<p class="post-description">{{ .Description }}</p>{{ end }}
-    </header>
-
-    <div class="post-body">
-      {{ .Content }}
+  <div class="post-hero">
+    <div class="container">
+      <header class="post-header">
+        <div class="post-meta">
+          <span class="post-category">{{ .Params.category }}</span>
+          <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span>
+          <span class="read-time">{{ math.Round (div (countwords .Content) 200) }} min read</span>
+        </div>
+        <h1>{{ .Title }}</h1>
+        {{ if .Description }}<p class="post-description">{{ .Description }}</p>{{ end }}
+      </header>
     </div>
-
-    <!-- Internal Links / Related Posts -->
-    {{ $related := .Site.RegularPages.Related . | first 4 }}
-    {{ if $related }}
-    <aside class="related-posts">
-      <h3>Related Guides</h3>
-      <div class="related-grid">
-        {{ range $related }}
-        <a href="{{ .Permalink }}" class="related-card">
-          <span>{{ .Title }}</span>
-        </a>
-        {{ end }}
-      </div>
-    </aside>
-    {{ end }}
-
-    <!-- Affiliate Disclosure -->
-    {{ if .Params.affiliate }}
-    <div class="affiliate-notice">
-      <p>This post contains affiliate links. If you buy something, we may earn a small commission at no extra cost to you. <a href="/affiliate-disclosure/">Learn more</a>.</p>
-    </div>
-    {{ end }}
   </div>
+
+  <div class="post-body">
+    {{ .Content }}
+  </div>
+
+  {{ $related := .Site.RegularPages.Related . | first 4 }}
+  {{ if $related }}
+  <aside class="related-posts">
+    <h3>Related Reads</h3>
+    <div class="related-grid">
+      {{ range $related }}
+      <a href="{{ .Permalink }}" class="related-card">{{ .Title }}</a>
+      {{ end }}
+    </div>
+  </aside>
+  {{ end }}
+
+  {{ if .Params.affiliate }}
+  <div class="affiliate-notice">
+    <p>This post contains affiliate links. If you buy something, we may earn a small commission at no extra cost to you. <a href="/affiliate-disclosure/">Learn more</a>.</p>
+  </div>
+  {{ end }}
 </article>
 {{ end }}

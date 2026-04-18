@@ -1,69 +1,186 @@
 {{ define "main" }}
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
   <div class="container">
-    <h1>Make better drinks at home.</h1>
-    <p class="hero-sub">India-focused guides, recipes, tools, and honest buying advice for home bartenders.</p>
-    <div class="hero-ctas">
-      <a href="/tools/party-planner/" class="btn btn-primary">Party Planner Tool</a>
-      <a href="/guides/home-bar-setup/" class="btn btn-secondary">Build Your Home Bar →</a>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-line"></span>
+          <span class="hero-eyebrow-text">India's Home Bar Authority</span>
+        </div>
+        <h1>Drink<br><em>Better.</em><br>Always.</h1>
+        <p class="hero-sub">Cocktail recipes, spirits guides, honest buying advice, and tools built for Indian home bartenders.</p>
+        <div class="hero-ctas">
+          <a href="/tools/party-planner/" class="btn btn-primary">Party Planner →</a>
+          <a href="/guides/" class="btn btn-secondary">Explore Guides</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-dial">
+          <div class="hero-dial-ring"></div>
+          <div class="hero-dial-ring"></div>
+          <div class="hero-dial-ring"></div>
+          <div class="hero-dial-center">
+            <span class="hero-dial-icon">🍸</span>
+            <span class="hero-dial-label">Drunkards</span>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">60+</div>
+            <div class="hero-stat-label">Recipes</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">₹0</div>
+            <div class="hero-stat-label">Always Free</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">IN</div>
+            <div class="hero-stat-label">India First</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
   </div>
 </section>
 
-<!-- Tools Strip -->
+<!-- TOOLS BENTO -->
 <section class="tools-strip">
   <div class="container">
-    <h2>Useful Tools</h2>
-    <div class="tools-grid">
+    <div class="section-header">
+      <h2 class="section-title">Useful <span>Tools</span></h2>
+      <a href="/tools/" class="section-link">All tools →</a>
+    </div>
+    <div class="tools-bento">
       <a href="/tools/cocktail-ratio-calculator/" class="tool-card">
+        <span class="tool-number">01</span>
         <span class="tool-icon">🍹</span>
         <h3>Cocktail Ratio Calculator</h3>
-        <p>Get perfect proportions every time</p>
+        <p>Perfect proportions for every drink, every time.</p>
+        <span class="tool-arrow">→</span>
       </a>
       <a href="/tools/party-planner/" class="tool-card">
+        <span class="tool-number">02</span>
         <span class="tool-icon">🎉</span>
         <h3>Party Planner</h3>
-        <p>How many bottles for your guests?</p>
+        <p>How many bottles for your guests? Get a full shopping list in ₹.</p>
+        <span class="tool-arrow">→</span>
       </a>
       <a href="/tools/abv-calculator/" class="tool-card">
+        <span class="tool-number">03</span>
         <span class="tool-icon">📊</span>
         <h3>ABV Calculator</h3>
-        <p>Know exactly how strong your drink is</p>
+        <p>Know exactly how strong your drink is before you pour.</p>
+        <span class="tool-arrow">→</span>
       </a>
       <a href="/tools/home-bar-checklist/" class="tool-card">
+        <span class="tool-number">04</span>
         <span class="tool-icon">✅</span>
         <h3>Home Bar Checklist</h3>
-        <p>Everything you need to get started</p>
+        <p>Everything you need to build a great home bar from scratch.</p>
+        <span class="tool-arrow">→</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- India Picks -->
+<!-- INDIA PICKS -->
 <section class="india-picks">
   <div class="container">
-    <h2>India Picks <span class="badge">Best of IN</span></h2>
-    <div class="picks-grid">
-      <a href="/india-picks/best-gin-india/" class="pick-card">Best Gin in India</a>
-      <a href="/india-picks/best-whisky-under-1500/" class="pick-card">Best Whisky Under ₹1500</a>
-      <a href="/india-picks/best-rum-india/" class="pick-card">Best Rum for Cocktails</a>
-      <a href="/india-picks/best-mixers-india/" class="pick-card">Best Mixers in India</a>
-      <a href="/india-picks/best-bar-tools-india/" class="pick-card">Best Bar Tools in India</a>
-      <a href="/india-picks/gifting-guide/" class="pick-card">Spirits Gifting Guide</a>
+    <div class="section-header">
+      <h2 class="section-title">India <span>Picks</span> <span class="badge">Best of IN</span></h2>
+      <a href="/india-picks/" class="section-link">All picks →</a>
+    </div>
+    <div class="picks-scroll">
+      <a href="/india-picks/best-gin-india/" class="pick-card">
+        <span class="pick-label">Gin</span>
+        Best Gin in India Under ₹2000
+      </a>
+      <a href="/india-picks/best-whisky-under-1500/" class="pick-card">
+        <span class="pick-label">Whisky</span>
+        Best Whisky Under ₹1500
+      </a>
+      <a href="/india-picks/best-rum-india/" class="pick-card">
+        <span class="pick-label">Rum</span>
+        Best Rum for Cocktails in India
+      </a>
+      <a href="/india-picks/best-mixers-india/" class="pick-card">
+        <span class="pick-label">Mixers</span>
+        Best Mixers Available in India
+      </a>
+      <a href="/india-picks/best-bar-tools-india/" class="pick-card">
+        <span class="pick-label">Bar Tools</span>
+        Best Bar Tools for Home Use
+      </a>
+      <a href="/india-picks/gifting-guide/" class="pick-card">
+        <span class="pick-label">Gifts</span>
+        Spirits Gifting Guide India
+      </a>
     </div>
   </div>
 </section>
 
-<!-- Start Here Guides -->
+<!-- LATEST POSTS — EDITORIAL GRID -->
+<section class="recent-posts">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest</h2>
+      <a href="/posts/" class="section-link">All posts →</a>
+    </div>
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ if $posts }}
+    <div class="posts-editorial">
+      {{ range $i, $post := first 3 $posts }}
+        {{ if eq $i 0 }}
+        <article class="post-card featured">
+          <span class="post-card-number">01</span>
+          <a href="{{ $post.Permalink }}">
+            <div class="post-meta">
+              <span class="post-category">{{ $post.Params.category }}</span>
+              <span class="post-date">{{ $post.Date.Format "Jan 2, 2006" }}</span>
+            </div>
+            <h2>{{ $post.Title }}</h2>
+            <p>{{ $post.Description }}</p>
+          </a>
+        </article>
+        {{ else }}
+        <article class="post-card">
+          <span class="post-card-number">0{{ $i | add 1 }}</span>
+          <a href="{{ $post.Permalink }}">
+            <div class="post-meta">
+              <span class="post-category">{{ $post.Params.category }}</span>
+              <span class="post-date">{{ $post.Date.Format "Jan 2, 2006" }}</span>
+            </div>
+            <h3>{{ $post.Title }}</h3>
+            <p>{{ $post.Description }}</p>
+          </a>
+        </article>
+        {{ end }}
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- START HERE GUIDES -->
+{{ $guides := where .Site.RegularPages "Section" "guides" }}
+{{ if $guides }}
 <section class="start-here">
   <div class="container">
-    <h2>Start Here</h2>
+    <div class="section-header">
+      <h2 class="section-title">Start <span>Here</span></h2>
+      <a href="/guides/" class="section-link">All guides →</a>
+    </div>
     <div class="guides-grid">
-      {{ range first 6 (where .Site.RegularPages "Section" "guides") }}
+      {{ range first 6 $guides }}
       <article class="guide-card">
         <a href="{{ .Permalink }}">
+          <div class="post-meta">
+            <span class="post-category">Guide</span>
+          </div>
           <h3>{{ .Title }}</h3>
           <p>{{ .Description }}</p>
           <span class="read-more">Read guide →</span>
@@ -73,26 +190,6 @@
     </div>
   </div>
 </section>
-
-<!-- Recent Posts -->
-<section class="recent-posts">
-  <div class="container">
-    <h2>Latest</h2>
-    <div class="posts-grid">
-      {{ range first 6 (where .Site.RegularPages "Section" "posts") }}
-      <article class="post-card">
-        <a href="{{ .Permalink }}">
-          <div class="post-meta">
-            <span class="post-category">{{ .Params.category }}</span>
-            <span class="post-date">{{ .Date.Format "Jan 2, 2006" }}</span>
-          </div>
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Description }}</p>
-        </a>
-      </article>
-      {{ end }}
-    </div>
-  </div>
-</section>
+{{ end }}
 
 {{ end }}
