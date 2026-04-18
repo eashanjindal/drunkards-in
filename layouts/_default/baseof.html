@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ if .IsHome }}{{ .Site.Title }} — India's Home Bar Authority{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <title>{{ if .IsHome }}Drunkards.in — India's Home Bar, Cocktail Recipes &amp; Spirits Guide{{ else }}{{ .Title }} | Drunkards.in — India's Home Bar Authority{{ end }}</title>
   <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
   <meta name="keywords" content="{{ if .Params.keywords }}{{ .Params.keywords }}{{ else }}{{ .Site.Params.keywords }}{{ end }}" />
   <link rel="canonical" href="{{ .Permalink }}" />
@@ -13,6 +13,10 @@
   <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+  <meta property="og:image" content="{{ if .Params.image }}{{ .Params.image }}{{ else }}https://drunkards.in/images/og-default.jpg{{ end }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:image" content="{{ if .Params.image }}{{ .Params.image }}{{ else }}https://drunkards.in/images/og-default.jpg{{ end }}" />
   <meta property="og:site_name" content="{{ .Site.Title }}" />
 
   <!-- Twitter Card -->
