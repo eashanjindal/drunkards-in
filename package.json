@@ -1,0 +1,13 @@
+{
+  "name": "drunkards-content-engine",
+  "version": "1.0.0",
+  "description": "Automated content generation for drunkards.in",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-post.js",
+    "test-generate": "ANTHROPIC_API_KEY=your_key_here node scripts/generate-post.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  }
+}

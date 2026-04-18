@@ -1,0 +1,98 @@
+{{ define "main" }}
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>Make better drinks at home.</h1>
+    <p class="hero-sub">India-focused guides, recipes, tools, and honest buying advice for home bartenders.</p>
+    <div class="hero-ctas">
+      <a href="/tools/party-planner/" class="btn btn-primary">Party Planner Tool</a>
+      <a href="/guides/home-bar-setup/" class="btn btn-secondary">Build Your Home Bar →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Tools Strip -->
+<section class="tools-strip">
+  <div class="container">
+    <h2>Useful Tools</h2>
+    <div class="tools-grid">
+      <a href="/tools/cocktail-ratio-calculator/" class="tool-card">
+        <span class="tool-icon">🍹</span>
+        <h3>Cocktail Ratio Calculator</h3>
+        <p>Get perfect proportions every time</p>
+      </a>
+      <a href="/tools/party-planner/" class="tool-card">
+        <span class="tool-icon">🎉</span>
+        <h3>Party Planner</h3>
+        <p>How many bottles for your guests?</p>
+      </a>
+      <a href="/tools/abv-calculator/" class="tool-card">
+        <span class="tool-icon">📊</span>
+        <h3>ABV Calculator</h3>
+        <p>Know exactly how strong your drink is</p>
+      </a>
+      <a href="/tools/home-bar-checklist/" class="tool-card">
+        <span class="tool-icon">✅</span>
+        <h3>Home Bar Checklist</h3>
+        <p>Everything you need to get started</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- India Picks -->
+<section class="india-picks">
+  <div class="container">
+    <h2>India Picks <span class="badge">Best of IN</span></h2>
+    <div class="picks-grid">
+      <a href="/india-picks/best-gin-india/" class="pick-card">Best Gin in India</a>
+      <a href="/india-picks/best-whisky-under-1500/" class="pick-card">Best Whisky Under ₹1500</a>
+      <a href="/india-picks/best-rum-india/" class="pick-card">Best Rum for Cocktails</a>
+      <a href="/india-picks/best-mixers-india/" class="pick-card">Best Mixers in India</a>
+      <a href="/india-picks/best-bar-tools-india/" class="pick-card">Best Bar Tools in India</a>
+      <a href="/india-picks/gifting-guide/" class="pick-card">Spirits Gifting Guide</a>
+    </div>
+  </div>
+</section>
+
+<!-- Start Here Guides -->
+<section class="start-here">
+  <div class="container">
+    <h2>Start Here</h2>
+    <div class="guides-grid">
+      {{ range first 6 (where .Site.RegularPages "Section" "guides") }}
+      <article class="guide-card">
+        <a href="{{ .Permalink }}">
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Description }}</p>
+          <span class="read-more">Read guide →</span>
+        </a>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Recent Posts -->
+<section class="recent-posts">
+  <div class="container">
+    <h2>Latest</h2>
+    <div class="posts-grid">
+      {{ range first 6 (where .Site.RegularPages "Section" "posts") }}
+      <article class="post-card">
+        <a href="{{ .Permalink }}">
+          <div class="post-meta">
+            <span class="post-category">{{ .Params.category }}</span>
+            <span class="post-date">{{ .Date.Format "Jan 2, 2006" }}</span>
+          </div>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Description }}</p>
+        </a>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

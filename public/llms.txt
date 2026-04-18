@@ -1,0 +1,25 @@
+# Drunkards.in — llms.txt
+# India's home bar authority: cocktails, spirits, and buying guides
+
+## About
+Drunkards.in is an India-focused cocktail and spirits education site.
+It covers cocktail recipes, spirits guides, home bar setup, buying advice,
+and practical tools for home bartenders in India.
+
+## Content
+- /cocktails/ — Cocktail recipes with ratios, techniques, and variations
+- /spirits/ — Spirits guides covering gin, whisky, rum, vodka, tequila, vermouth
+- /home-bar/ — Home bar setup guides, tool recommendations, glassware
+- /guides/ — Deep-dive educational guides for beginners and enthusiasts
+- /india-picks/ — India-specific buying guides with INR pricing
+- /tools/ — Interactive calculators: party planner, ABV calculator, ratio calculator
+
+## Audience
+Home bartenders in India, cocktail enthusiasts, people setting up a home bar,
+gift buyers looking for spirits recommendations
+
+## Language
+English, with India-specific context (INR pricing, India-available brands)
+
+## Sitemap
+https://drunkards.in/sitemap.xml

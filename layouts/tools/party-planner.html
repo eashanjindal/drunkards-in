@@ -1,0 +1,191 @@
+{{ define "main" }}
+<section class="tool-page">
+  <div class="container">
+    <header class="tool-header">
+      <div class="post-meta"><span class="post-category">Tool</span></div>
+      <h1>Party Alcohol Calculator</h1>
+      <p class="post-description">How many bottles do you need? Enter your details and get a complete shopping list.</p>
+    </header>
+
+    <div class="tool-body">
+      <div class="tool-form">
+
+        <div class="form-row">
+          <label for="guests">Number of Guests</label>
+          <input type="number" id="guests" min="1" max="500" value="20" />
+        </div>
+
+        <div class="form-row">
+          <label for="hours">Party Duration (hours)</label>
+          <input type="number" id="hours" min="1" max="12" value="4" />
+        </div>
+
+        <div class="form-row">
+          <label>Crowd Type</label>
+          <div class="radio-group">
+            <label><input type="radio" name="crowd" value="light" /> Light drinkers</label>
+            <label><input type="radio" name="crowd" value="moderate" checked /> Moderate</label>
+            <label><input type="radio" name="crowd" value="heavy" /> Heavy drinkers</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>What are you serving?</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" id="whisky" checked /> Whisky</label>
+            <label><input type="checkbox" id="gin" checked /> Gin</label>
+            <label><input type="checkbox" id="rum" /> Rum</label>
+            <label><input type="checkbox" id="vodka" /> Vodka</label>
+            <label><input type="checkbox" id="beer" checked /> Beer</label>
+            <label><input type="checkbox" id="wine" /> Wine</label>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="calculate()" style="width:100%;margin-top:8px;">Calculate →</button>
+      </div>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <h2>Your Shopping List</h2>
+        <div id="result-content"></div>
+        <p class="result-note">💡 Prices are approximate India retail estimates. Always buy 10–15% extra — running out is worse than having leftovers.</p>
+      </div>
+
+      <div class="tool-explainer">
+        <h2>How This Calculator Works</h2>
+        <p>The calculator uses standard bartender estimates: a moderate drinker has roughly 1.5 drinks per hour. A standard drink is 30ml of spirits or 330ml of beer. We account for party duration, crowd type, and the mix of drinks you're serving.</p>
+        <h3>Quick Reference</h3>
+        <table>
+          <thead><tr><th>Bottle Size</th><th>Drinks per Bottle (30ml pours)</th></tr></thead>
+          <tbody>
+            <tr><td>750ml spirits</td><td>~25 drinks</td></tr>
+            <tr><td>1L spirits</td><td>~33 drinks</td></tr>
+            <tr><td>330ml beer can</td><td>1 drink</td></tr>
+            <tr><td>750ml wine</td><td>~5 glasses</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.tool-page { padding: 60px 0 100px; }
+.tool-header { max-width: 780px; margin: 0 auto 48px; }
+.tool-header h1 { font-family: var(--font-display); font-size: clamp(32px,4vw,52px); font-weight: 900; color: var(--white); margin: 12px 0; }
+.tool-body { max-width: 780px; margin: 0 auto; }
+.tool-form { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 32px; }
+.form-row { margin-bottom: 24px; }
+.form-row label { display: block; font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 8px; }
+.form-row input[type="number"] { width: 100%; background: var(--black); border: 1px solid var(--border); color: var(--cream); padding: 12px 16px; border-radius: var(--radius); font-size: 16px; font-family: var(--font-body); }
+.form-row input[type="number"]:focus { outline: none; border-color: var(--amber); }
+.radio-group, .checkbox-group { display: flex; flex-wrap: wrap; gap: 16px; }
+.radio-group label, .checkbox-group label { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--cream); cursor: pointer; }
+.radio-group input, .checkbox-group input { accent-color: var(--amber); width: 16px; height: 16px; }
+.tool-result { background: var(--card); border: 1px solid var(--amber); border-radius: var(--radius); padding: 32px; margin-bottom: 32px; }
+.tool-result h2 { font-family: var(--font-display); font-size: 24px; color: var(--white); margin-bottom: 20px; }
+.result-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.result-item:last-child { border-bottom: none; }
+.result-item-name { font-weight: 500; color: var(--white); }
+.result-item-detail { font-size: 14px; color: var(--muted); }
+.result-item-price { color: var(--amber); font-weight: 600; }
+.result-total { margin-top: 20px; padding-top: 16px; border-top: 2px solid var(--amber); display: flex; justify-content: space-between; font-size: 18px; font-weight: 600; color: var(--white); }
+.result-note { font-size: 13px; color: var(--muted); margin-top: 16px; }
+.tool-explainer h2 { font-family: var(--font-display); font-size: 26px; color: var(--white); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.tool-explainer h3 { font-size: 18px; color: var(--white); margin: 24px 0 12px; }
+.tool-explainer p { color: var(--cream); margin-bottom: 16px; }
+.tool-explainer table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+.tool-explainer th { background: var(--card); color: var(--amber); padding: 10px 14px; text-align: left; border-bottom: 2px solid var(--amber); }
+.tool-explainer td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--cream); }
+</style>
+
+<script>
+function calculate() {
+  const guests = parseInt(document.getElementById('guests').value) || 20;
+  const hours = parseInt(document.getElementById('hours').value) || 4;
+  const crowd = document.querySelector('input[name="crowd"]:checked').value;
+  const hasWhisky = document.getElementById('whisky').checked;
+  const hasGin = document.getElementById('gin').checked;
+  const hasRum = document.getElementById('rum').checked;
+  const hasVodka = document.getElementById('vodka').checked;
+  const hasBeer = document.getElementById('beer').checked;
+  const hasWine = document.getElementById('wine').checked;
+
+  const drinksPerHour = { light: 1, moderate: 1.5, heavy: 2 }[crowd];
+  const totalDrinks = Math.ceil(guests * hours * drinksPerHour);
+
+  // Spirit selections
+  const spirits = [hasWhisky, hasGin, hasRum, hasVodka].filter(Boolean).length;
+  const hasSoftOptions = hasBeer || hasWine;
+
+  // Distribute drinks: 60% spirits, 40% beer/wine if both available
+  let spiritDrinks = spirits > 0 ? (hasSoftOptions ? totalDrinks * 0.6 : totalDrinks) : 0;
+  let softDrinks = hasSoftOptions ? (spirits > 0 ? totalDrinks * 0.4 : totalDrinks) : 0;
+
+  const drinksPerSpirit = spirits > 0 ? Math.ceil(spiritDrinks / spirits) : 0;
+  const bottlesPerSpirit = Math.ceil(drinksPerSpirit / 25); // 750ml = ~25 drinks
+
+  const items = [];
+
+  if (hasWhisky && drinksPerSpirit > 0) {
+    const bottles = bottlesPerSpirit;
+    const cost = bottles * 1800;
+    items.push({ name: 'Whisky', detail: `${bottles} × 750ml bottle${bottles > 1 ? 's' : ''}`, price: cost });
+  }
+  if (hasGin && drinksPerSpirit > 0) {
+    const bottles = bottlesPerSpirit;
+    const cost = bottles * 1600;
+    items.push({ name: 'Gin', detail: `${bottles} × 750ml bottle${bottles > 1 ? 's' : ''} + tonic water`, price: cost });
+    const tonicCans = bottles * 8;
+    items.push({ name: 'Tonic Water', detail: `${tonicCans} × 250ml cans`, price: tonicCans * 45 });
+  }
+  if (hasRum && drinksPerSpirit > 0) {
+    const bottles = bottlesPerSpirit;
+    const cost = bottles * 1200;
+    items.push({ name: 'Rum', detail: `${bottles} × 750ml bottle${bottles > 1 ? 's' : ''}`, price: cost });
+  }
+  if (hasVodka && drinksPerSpirit > 0) {
+    const bottles = bottlesPerSpirit;
+    const cost = bottles * 1400;
+    items.push({ name: 'Vodka', detail: `${bottles} × 750ml bottle${bottles > 1 ? 's' : ''}`, price: cost });
+  }
+  if (hasBeer) {
+    const beerDrinks = spirits > 0 ? Math.ceil(softDrinks * 0.7) : Math.ceil(softDrinks);
+    const cans = Math.ceil(beerDrinks);
+    items.push({ name: 'Beer', detail: `${cans} × 330ml cans`, price: cans * 120 });
+  }
+  if (hasWine) {
+    const wineDrinks = spirits > 0 ? Math.ceil(softDrinks * 0.3) : Math.ceil(softDrinks * 0.5);
+    const bottles = Math.ceil(wineDrinks / 5);
+    items.push({ name: 'Wine', detail: `${bottles} × 750ml bottle${bottles > 1 ? 's' : ''}`, price: bottles * 700 });
+  }
+
+  // Mixers
+  if (hasWhisky || hasRum || hasVodka) {
+    const sodas = Math.ceil(guests * 0.5);
+    items.push({ name: 'Soda / Mixers', detail: `${sodas} × 300ml bottles`, price: sodas * 30 });
+  }
+
+  // Ice
+  const iceKg = Math.ceil(guests * 0.3);
+  items.push({ name: 'Ice', detail: `${iceKg} kg`, price: iceKg * 40 });
+
+  const total = items.reduce((sum, i) => sum + i.price, 0);
+
+  let html = items.map(item => `
+    <div class="result-item">
+      <div>
+        <div class="result-item-name">${item.name}</div>
+        <div class="result-item-detail">${item.detail}</div>
+      </div>
+      <div class="result-item-price">₹${item.price.toLocaleString('en-IN')}</div>
+    </div>
+  `).join('');
+
+  html += `<div class="result-total"><span>Estimated Total</span><span>₹${total.toLocaleString('en-IN')}</span></div>`;
+
+  document.getElementById('result-content').innerHTML = html;
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+{{ end }}

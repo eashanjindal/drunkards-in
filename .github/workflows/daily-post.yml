@@ -1,0 +1,41 @@
+name: Daily Content Generation
+
+on:
+  schedule:
+    # Runs every day at 2:30 AM UTC = 8:00 AM IST
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+    # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  generate-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @anthropic-ai/sdk
+
+      - name: Generate blog post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-post.js
+
+      - name: Commit and push new post
+        run: |
+          git config --local user.email "bot@drunkards.in"
+          git config --local user.name "Drunkards Bot"
+          git add content/posts/
+          git diff --staged --quiet || git commit -m "chore: auto-publish daily post $(date +'%Y-%m-%d')"
+          git push

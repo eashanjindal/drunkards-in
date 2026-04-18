@@ -1,0 +1,35 @@
+baseURL = "https://drunkards.in"
+languageCode = "en-in"
+title = "Drunkards.in"
+
+[params]
+  description = "India's home bar authority. Cocktail recipes, spirits guides, buying advice and tools for people who take their drinks seriously."
+  author = "Drunkards.in"
+  keywords = "cocktails india, home bar, spirits guide, whisky india, gin india, cocktail recipes"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "daily"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+
+[pagination]
+  pagerSize = 12
