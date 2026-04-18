@@ -28,3 +28,8 @@
   from = "/party-planner"
   to = "/tools/party-planner/"
   status = 301
+
+[[headers]]
+  for = "/*.txt"
+  [headers.values]
+    Content-Type = "text/plain"
