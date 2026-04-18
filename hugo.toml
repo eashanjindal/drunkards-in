@@ -33,3 +33,7 @@ title = "Drunkards.in"
 
 [pagination]
   pagerSize = 12
+
+# Enable asset fingerprinting
+[build]
+  writeStats = true

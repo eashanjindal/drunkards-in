@@ -58,8 +58,14 @@
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-  <!-- Stylesheet -->
+  <!-- Stylesheet with cache busting -->
+  {{- $css := resources.Get "css/main.css" }}
+  {{- if $css }}
+  {{- $css = $css | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous" />
+  {{- else }}
   <link rel="stylesheet" href="/css/main.css" />
+  {{- end }}
 
   <!-- Sitemap hint for crawlers -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
@@ -79,6 +85,12 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+  {{- $js := resources.Get "js/main.js" }}
+  {{- if $js }}
+  {{- $js = $js | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+  {{- else }}
   <script src="/js/main.js"></script>
+  {{- end }}
 </body>
 </html>

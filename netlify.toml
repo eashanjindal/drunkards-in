@@ -5,6 +5,7 @@
 [build.environment]
   HUGO_VERSION = "0.124.0"
 
+# ─── Security Headers (all pages) ────────────────────────────────────────────
 [[headers]]
   for = "/*"
   [headers.values]
@@ -12,13 +13,54 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Cache-Control = "public, max-age=31536000, immutable"
 
+# ─── HTML pages — always revalidate ──────────────────────────────────────────
+# Browser checks for new version on every visit
+# If unchanged, server returns 304 (not modified) — fast, no redownload
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# ─── Fingerprinted CSS/JS — cache forever ────────────────────────────────────
+# Hugo adds a content hash to filenames e.g. main.a1b2c3d4.css
+# When file changes, hash changes, so this is safe to cache indefinitely
+[[headers]]
+  for = "/css/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ─── Images — cache 30 days ──────────────────────────────────────────────────
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# ─── Fonts — cache 1 year ────────────────────────────────────────────────────
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ─── Text files ──────────────────────────────────────────────────────────────
+[[headers]]
+  for = "/*.txt"
+  [headers.values]
+    Content-Type = "text/plain"
+    Cache-Control = "public, max-age=86400"
+
+# ─── Sitemap — revalidate daily ──────────────────────────────────────────────
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+# ─── Redirects ───────────────────────────────────────────────────────────────
 [[redirects]]
   from = "/home-bar-checklist"
   to = "/tools/home-bar-checklist/"
@@ -28,8 +70,3 @@
   from = "/party-planner"
   to = "/tools/party-planner/"
   status = 301
-
-[[headers]]
-  for = "/*.txt"
-  [headers.values]
-    Content-Type = "text/plain"
