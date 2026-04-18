@@ -32,6 +32,17 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-post.js
 
+      - name: Ping IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "host": "drunkards.in",
+              "key": "52734b643198405a9f80a3d2bf08ed04",
+              "keyLocation": "https://drunkards.in/52734b643198405a9f80a3d2bf08ed04.txt",
+              "urlList": ["https://drunkards.in/"]
+            }'
+
       - name: Commit and push new post
         run: |
           git config --local user.email "bot@drunkards.in"
