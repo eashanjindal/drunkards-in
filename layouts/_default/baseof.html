@@ -30,12 +30,22 @@
     "headline": "{{ .Title }}",
     "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary }}{{ end }}",
     "url": "{{ .Permalink }}",
-    "datePublished": "{{ .Date.Format "2006-01-02" }}",
-    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
-    "publisher": {
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05+05:30" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05+05:30" }}",
+    "author": {
       "@type": "Organization",
       "name": "Drunkards.in",
       "url": "https://drunkards.in"
+    },
+    "image": "https://drunkards.in/images/og-default.jpg",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Drunkards.in",
+      "url": "https://drunkards.in",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://drunkards.in/images/logo.png"
+      }
     }
   }
   </script>
@@ -48,8 +58,18 @@
     "name": "{{ .Title }}",
     "description": "{{ .Description }}",
     "url": "{{ .Permalink }}",
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05+05:30" }}",
+    "image": "https://drunkards.in/images/og-default.jpg",
+    "author": {
+      "@type": "Organization",
+      "name": "Drunkards.in"
+    },
     "recipeCategory": "Cocktail",
-    "recipeCuisine": "Cocktail"
+    "recipeCuisine": "Cocktail",
+    "keywords": "{{ .Params.keywords }}",
+    "recipeYield": "1 cocktail",
+    "prepTime": "PT5M",
+    "totalTime": "PT5M"
   }
   </script>
   {{ end }}
