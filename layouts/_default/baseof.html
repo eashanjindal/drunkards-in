@@ -63,6 +63,15 @@
 
   <!-- Sitemap hint for crawlers -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-34MYCQW1WT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-34MYCQW1WT');
+  </script>
 </head>
 <body>
   {{ partial "header.html" . }}
